@@ -6,12 +6,10 @@ import lombok.Setter;
 import javax.validation.constraints.NotEmpty;
 
 @Getter @Setter
-public class MemberForm {
+public class UserForm {
 
     @NotEmpty(message = "회원 이름은 필수 입니다")
     private String name;
-
-    private String city;
-    private String street;
-    private String zipcode;
+    @NotEmpty(message = "회원 이름은 필수 입니다")
+    private String email;
 }
