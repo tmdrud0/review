@@ -17,8 +17,9 @@ public class MainController {
     @Autowired // spring boot가 미리 생성해놓은 객체 가져다 자동 연결
     private PdnameRepository pdnameRepository;
 
-    @GetMapping("/test")
+    @GetMapping("/main")
     public String formData(){
+
         return "main";
     }
 
