@@ -20,10 +20,24 @@ public class MainController {
     @GetMapping("/main")
     public String formData(){
 
-        return "main";
+        return "/review/main";
+    }
+    @GetMapping("/showReview")
+    public String link1(){
+        return "/review/reviewResult";
     }
 
-    @PostMapping("Test/create")
+    @GetMapping("/showCompareList")
+    public String link2(){
+        return "/review/comparelist";
+    }
+
+    @GetMapping("/showCompareResult")
+    public String link3(){
+        return "/review/compare";
+    }
+
+    @PostMapping("/search")
     public String createData(Form form){ //container
         log.info(form.toString());
 
@@ -47,7 +61,7 @@ public class MainController {
         model.addAttribute("pdNameList", pdNameEntity);
 
         // 3. 뷰 페이지 설정
-        return "/show";
+        return "/review/showlist";
 
     }
 }
