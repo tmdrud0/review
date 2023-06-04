@@ -2,9 +2,13 @@ package com.capstone.review.DTO;
 
 import com.capstone.review.entity.ProductName;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 
 @AllArgsConstructor
+@Getter
+@Setter
 @ToString
 public class Form {
 
