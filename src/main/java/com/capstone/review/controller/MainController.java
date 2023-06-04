@@ -57,7 +57,7 @@ public class MainController {
         jsonObject.put("content", form.getContent());
 
         // JSON 파일 생성 및 저장
-        String jsonFilePath = "classpath:static/json/file.json";
+        String jsonFilePath = "src/main/resources/static/json/file.json";
         try (FileWriter fileWriter = new FileWriter(jsonFilePath)) {
             fileWriter.write(jsonObject.toString());
             fileWriter.flush();
