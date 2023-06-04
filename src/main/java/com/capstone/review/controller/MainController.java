@@ -4,11 +4,14 @@ import com.capstone.review.DTO.Form;
 import com.capstone.review.entity.ProductName;
 import com.capstone.review.repository.PdnameRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 
 @org.springframework.stereotype.Controller
@@ -48,6 +51,19 @@ public class MainController {
         // repository에 entity를 db로 저장하게 함
         ProductName saved = pdnameRepository.save(pdName);
         log.info(saved.toString());
+
+        // json 객체 생성
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("content", form.getContent());
+
+        // JSON 파일 생성 및 저장
+        String jsonFilePath = "classpath:static/json/file.json";
+        try (FileWriter fileWriter = new FileWriter(jsonFilePath)) {
+            fileWriter.write(jsonObject.toString());
+            fileWriter.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         return "redirect:/result";
     }

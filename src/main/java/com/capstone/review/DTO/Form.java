@@ -13,4 +13,8 @@ public class Form {
     public ProductName toEntity() {
         return new ProductName(null, content); // ProductName = entity class -> 생성자 추가
     }
+
+    public String getContent() {
+        return content;
+    }
 }
