@@ -57,7 +57,7 @@ public class MainController {
         jsonObject.put("content", form.getContent());
 
         // JSON 파일 생성 및 저장
-        String jsonFilePath = "src/main/resources/static/json/file.json";
+        String jsonFilePath = "src/main/resources/static/json/product.json";
         try (FileWriter fileWriter = new FileWriter(jsonFilePath)) {
             fileWriter.write(jsonObject.toString());
             fileWriter.flush();
@@ -71,10 +71,10 @@ public class MainController {
     public String show(Model model){
 
         // 1. 모든 데이터 가져오기
-        List<ProductName> pdNameEntity = pdnameRepository.findAll();
+        // List<ProductName> pdNameEntity = pdnameRepository.findAll();
 
         // 2. 가져온 데이터 묶음 view 전달
-        model.addAttribute("pdNameList", pdNameEntity);
+        // model.addAttribute("pdNameList", pdNameEntity);
 
         // 3. 뷰 페이지 설정
         return "/review/showlist";
