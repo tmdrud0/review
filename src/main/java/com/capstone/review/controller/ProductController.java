@@ -1,13 +1,12 @@
 package com.capstone.review.controller;
 
-import com.capstone.review.service.ProductService;
+import com.capstone.review.domain.Product;
+import com.capstone.review.service.RabbitProductService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -15,10 +14,19 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ProductController {
 
-    private final ProductService productService;
-    @GetMapping("/product")
+    @Autowired
+    private final RabbitProductService rabbitProductService;
+
+    @GetMapping("/products/detail")
     public String list(Model model) {
-        model.addAttribute("product", productService.get());
-        return "products/product";
+        model.addAttribute("product", rabbitProductService.getProductByName("test"));
+        return "products/productDetail";
+    }
+    @GetMapping("/products")
+    public String test(Model model){
+        List<Product> productList = rabbitProductService.getProductsByName("test");
+        for(int i=0;i<productList.size();i++)
+        model.addAttribute("products",productList);
+        return "products/products";
     }
 }
