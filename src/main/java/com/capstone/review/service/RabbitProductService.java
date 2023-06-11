@@ -28,13 +28,15 @@ public class RabbitProductService{
             rabbitProductRepository.send(name);
             String data = rabbitProductRepository.receive();
             JSONObject object = (JSONObject) parser.parse(data);
-            JSONArray products = (JSONArray) object.get("products");
-            for(int i=0;i<products.size();i++){
-                JSONObject curProduct = (JSONObject) products.get(i);
+            for(Object key : object.keySet()){
+                String pCode = (String) key;
+                JSONObject curProduct = (JSONObject) object.get(key);
                 result.add(Product.builder().
-                        name((String)curProduct.get("name"))
+                        pCode(Long.valueOf(pCode))
+                        .name((String)curProduct.get("name"))
                         .price(Long.parseLong((String)curProduct.get("price")))
                         .category((String)curProduct.get("category"))
+                        .detail((String)curProduct.get("detail"))
                         .build());
             }
         }catch (Exception e){}

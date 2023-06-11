@@ -1,32 +1,50 @@
 {{>layouts/header}}
 
+
+<div class="container">
+<div>
 <table class="table table-hover">
     <colgroup>
-        <col width="25%"/>
-        <col width="20%"/>
-        <col width="15%"/>
-        <col width="20%"/>
-        <col width="20%"/>
+        <col width="10%"/>
+        <col width="40%"/>
+        <col width="40%"/>
     </colgroup>
     <thead>
     <tr>
-        <th scope="col">제품명</th>
-        <th scope="col">세부 스펙</th>
-        <th scope="col">가격</th>
-        <th scope="col">긍정적 리뷰</th>
-        <th scope="col">부정적 리뷰</th>
-
+        <th>항목</th>
+        <th>제품 1</th>
+        <th>제품 2</th>
     </tr>
     </thead>
     <tbody>
-    <tr>
-        <th scope="row">111111</th>
-        <td style="word-break:break-all">11111111111111111111111111</td>
-        <td style="word-break:break-all">1111111111111111111111111111111111111111111111111111111</td>
-        <td style="word-break:break-all">@mdo</td>
-        <td style="word-break:break-all">111111</td>
-    </tr>
+    {{#products}}
+        <tr>
+            <td>제품명</td>
+            <td>{{name}}</td>
+        </tr>
+        <tr>
+            <td>카테고리</td>
+            <td>{{category}}</td>
+        </tr>
+        <tr>
+            <td>가격</td>
+            <td>{{price}}</td>
+        </tr>
+        <tr>
+            <td>세부 스펙</td>
+            <td>{{detail}}</td>
+        </tr>
+        <tr>
+            <td>긍정 리뷰</td>
+            <td>{{positiveReview}}</td>
+        </tr>
+        <tr>
+            <td>부정 리뷰</td>
+            <td>{{negativeReview}}</td>
+        </tr>
+    {{/products}}
     </tbody>
 </table>
-
+</div>
+</div>
 {{>layouts/footer}}

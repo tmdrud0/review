@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -28,5 +29,13 @@ public class ProductController {
         for(int i=0;i<productList.size();i++)
         model.addAttribute("products",productList);
         return "products/products";
+    }
+
+    @PostMapping("/search")
+    public String search(Model model){
+        List<Product> productList = rabbitProductService.getProductsByName("test");
+        for(int i=0;i<productList.size();i++)
+            model.addAttribute("products",productList);
+        return "review/showlist";
     }
 }

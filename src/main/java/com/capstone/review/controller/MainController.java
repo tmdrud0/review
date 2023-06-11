@@ -25,6 +25,9 @@ public class MainController {
 
         return "/review/main";
     }
+
+
+
     @GetMapping("/showReview")
     public String link1(){
         return "/review/reviewResult";
