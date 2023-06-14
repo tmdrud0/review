@@ -50,10 +50,8 @@ public class SecurityConfig {
 				.addFilter(new JwtAuthenticationFilter(authenticationManager()))
 				.addFilter(new JwtAuthorizationFilter(authenticationManager(), userRepository))
 				.authorizeRequests()
-				.antMatchers("/api/v1/user/**")
-				.access("hasRole('ROLE_USER') or hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')")
-				.antMatchers("/api/v1/admin/**")
-				.access("hasRole('ROLE_ADMIN')")
+				.antMatchers("/user-test")
+				.authenticated()
 				.anyRequest().permitAll()
 				.and().build();
 	}

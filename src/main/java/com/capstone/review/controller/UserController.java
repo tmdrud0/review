@@ -20,4 +20,9 @@ public class UserController {
         return "join";
     }
 
+    @GetMapping("/user-test")
+    public String test() {
+        return "test";
+    }
+
 }
